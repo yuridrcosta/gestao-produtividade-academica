@@ -1,6 +1,9 @@
 
 package academicproductivitysystem;
 
+import static academicproductivitysystem.AcademicProductivitySystem.addOrientation;
+import static academicproductivitysystem.AcademicProductivitySystem.addPublication;
+import static academicproductivitysystem.AcademicProductivitySystem.generalReport;
 import static academicproductivitysystem.AcademicProductivitySystem.manageCollaborators;
 import static academicproductivitysystem.AcademicProductivitySystem.manageProjects;
 import static academicproductivitysystem.AcademicProductivitySystem.readMenuOption;
@@ -25,10 +28,13 @@ public class Main {
                     manageProjects();
                     break;
                 case 3:
+                    addPublication();
                     break;
                 case 4:
+                    addOrientation();
                     break;
                 case 5:
+                    generalReport();
                     break;
                 case 6:
                     break;
