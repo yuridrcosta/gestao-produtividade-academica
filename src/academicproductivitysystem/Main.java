@@ -4,8 +4,10 @@ package academicproductivitysystem;
 import static academicproductivitysystem.AcademicProductivitySystem.addOrientation;
 import static academicproductivitysystem.AcademicProductivitySystem.addPublication;
 import static academicproductivitysystem.AcademicProductivitySystem.generalReport;
+import static academicproductivitysystem.AcademicProductivitySystem.listPublications;
 import static academicproductivitysystem.AcademicProductivitySystem.manageCollaborators;
 import static academicproductivitysystem.AcademicProductivitySystem.manageProjects;
+import static academicproductivitysystem.AcademicProductivitySystem.publications;
 import static academicproductivitysystem.AcademicProductivitySystem.readMenuOption;
 import static academicproductivitysystem.AcademicProductivitySystem.showMainMenu;
 
@@ -30,13 +32,14 @@ public class Main {
                 case 3:
                     addPublication();
                     break;
-                case 4:
+                case 5:
                     addOrientation();
                     break;
-                case 5:
+                case 6:
                     generalReport();
                     break;
-                case 6:
+                case 4:
+                    listPublications(publications);
                     break;
                 case 7:
                     break;
