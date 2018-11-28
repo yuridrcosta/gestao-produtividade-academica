@@ -24,8 +24,9 @@ public class AcademicProductivitySystem {
         System.out.println("        [1]- Gerenciar colaboradores");
         System.out.println("        [2]- Gerenciar projetos");
         System.out.println("        [3]- Adicionar publicação");
-        System.out.println("        [4]- Adicionar orientação");
-        System.out.println("        [5]- Relatório geral");
+        System.out.println("        [4]- Listar publicações");
+        System.out.println("        [5]- Adicionar orientação");
+        System.out.println("        [6]- Relatório geral");
         System.out.println("        [0]- Sair");
         
     }
@@ -394,7 +395,7 @@ public class AcademicProductivitySystem {
             iaux = read.nextInt();
             newPub.setYear(iaux);
             saux = read.nextLine();
-            System.out.println("[+] Digite o nome do projeto associado:");
+            System.out.println("[+] Digite o nome do projeto associado, se não houver projeto associado, digite 0:");
             saux = read.nextLine();
             
             Project foundProject = findProject(saux);
@@ -710,6 +711,7 @@ public class AcademicProductivitySystem {
             Publication pj = it.next();
             
             System.out.println("        ->Título: "+ pj.getTitle());
+            System.out.println("        ->Conferência: "+pj.getConference());
             System.out.println("        ->Ano: "+ pj.getYear());
             System.out.print("        ->Autores:");
             for (Iterator<Student> it2 = pj.stdAuthors.iterator(); it2.hasNext();){
