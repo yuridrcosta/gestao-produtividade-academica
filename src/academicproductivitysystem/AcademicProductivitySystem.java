@@ -3,6 +3,7 @@ package academicproductivitysystem;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Iterator;
 
 public class AcademicProductivitySystem {
@@ -31,15 +32,6 @@ public class AcademicProductivitySystem {
         
     }
     
-    public static int readMenuOption(){
-        
-        int menuOpt;
-       
-        menuOpt = read.nextInt();
-        
-        return menuOpt;
-       
-    }
     /* INÍCIO do menu de gerenciamento de Colaboradores*/
     public static void manageCollaborators(){
         
@@ -61,7 +53,7 @@ public class AcademicProductivitySystem {
                     System.out.println("[+] Digite o email do estudante:");
                     ad = read.nextLine();
                     System.out.println("[+] Digite o tipo do estudante: (inteiro) (1 para ALUNO DE GRADUAÇÃO, 2 para ALUNO DE MESTRADO e 3 para ALUNO DE DOUTORADO)");
-                    tp = read.nextInt();
+                    tp = readNumber();
                     
                     Student n = new Student(nm,ad,tp);
                     
@@ -97,7 +89,7 @@ public class AcademicProductivitySystem {
                 case 4:
                     
                     System.out.println("[+] Qual o tipo de colaborador? (Digite 1 para ESTUDANTE, 2 para PROFESSOR e 3 para PESQUISADOR");
-                    tp = read.nextInt();
+                    tp = readNumber();
                     
                     if(tp == 1){
                         
@@ -181,17 +173,17 @@ public class AcademicProductivitySystem {
                     proj.setDescription(tt);
                     proj.setStatus(1);
                     System.out.println("[+] Digite a data de início: (FORMATO: dd mm aaaa)");
-                    iaux[0] = read.nextInt();
-                    iaux[1] = read.nextInt();
-                    iaux[2] = read.nextInt();
+                    iaux[0] = readNumber();
+                    iaux[1] = readNumber();
+                    iaux[2] = readNumber();
                     proj.setStartDate(iaux);
                     System.out.println("[+] Digite a data de término: (FORMATO: dd mm aaaa)");
-                    iaux[0] = read.nextInt();
-                    iaux[1] = read.nextInt();
-                    iaux[2] = read.nextInt();
+                    iaux[0] = readNumber();
+                    iaux[1] = readNumber();
+                    iaux[2] = readNumber();
                     proj.setFinishDate(iaux);
                     System.out.println("[+] Digite o valor do financiamento recebido:");
-                    faux = read.nextFloat();
+                    faux = readFloat();
                     proj.setFunds(faux);
                     tt = read.nextLine();
                     System.out.println("[+] Digite o nome de um professor responsável:");
@@ -214,7 +206,7 @@ public class AcademicProductivitySystem {
                     }
                     
                     System.out.println("[+] Digite 1 se deseja adicionar mais professores, 0 caso não deseje:");
-                    iaux1 = read.nextInt();
+                    iaux1 = readNumber();
                     if(iaux1 == 1){
                         
                         tt = read.nextLine();
@@ -242,7 +234,7 @@ public class AcademicProductivitySystem {
                     
                     if(foundProject != null){
                         System.out.println("[+] Digite o número referente ao tipo de colaborador a ser adicionado: (1 para ESTUDANTE, 2 para PROFESSOR e 3 para PESQUISADOR)");
-                        iaux1 = read.nextInt();
+                        iaux1 = readNumber();
                         
                         if(iaux1 == 1){
                             tt = read.nextLine();
@@ -392,7 +384,7 @@ public class AcademicProductivitySystem {
             saux = read.nextLine();
             newPub.setConference(saux);
             System.out.println("[+] Digite o ano da publicação:");
-            iaux = read.nextInt();
+            iaux = readNumber();
             newPub.setYear(iaux);
             saux = read.nextLine();
             System.out.println("[+] Digite o nome do projeto associado, se não houver projeto associado, digite 0:");
@@ -414,7 +406,7 @@ public class AcademicProductivitySystem {
             }
             
             System.out.println("[+] Digite 1 para adicionar um autor ESTUDANTE, 2 para um autor PROFESSOR e 3 para um autor PESQUISADOR:");
-            iaux = read.nextInt();
+            iaux = readNumber();
             
             while(iaux != 0){
                 saux = read.nextLine();
@@ -455,7 +447,7 @@ public class AcademicProductivitySystem {
                 
                 
                 System.out.println("[+] Se desejar adicionar mais autores, digite o número correspondente ao tipo de autor, se não, digite 0:");
-                iaux = read.nextInt();
+                iaux = readNumber();
             }
             publications.add(newPub);
     }
@@ -600,6 +592,7 @@ public class AcademicProductivitySystem {
         if(exit == 1){
             return st;
         }
+        
         else{
             return null;
         }
@@ -735,5 +728,44 @@ public class AcademicProductivitySystem {
             System.out.println("");
         }
     }
+    
+    /*INÍCIO dos leitores com tratamento de excessão*/
+    public static int readMenuOption(){
+        int menuOpt = 0;
+        
+        try{
+            menuOpt = read.nextInt();
+        }catch(InputMismatchException error){
+            System.out.println("ERRO: Você deve digitar um número!");
+        }
+        return menuOpt;
+    }
+    
+    public static int readNumber(){
+        int rNumber = 0;
+        
+        try{
+            rNumber = read.nextInt();
+        }catch(InputMismatchException error){
+            System.out.println("ERRO: Você deve digitar um número!");
+        }
+            
+        return rNumber;
+    }
+    
+    public static Float readFloat(){
+        float rFloat = 0;
+        
+        try{
+            rFloat = read.nextFloat();
+        }catch(InputMismatchException error){
+            System.out.println("ERRO: Você deve digitar um número real (float)! (Formato: XX,X)");
+        }
+        
+        return rFloat;
+    }
+    
+    
+    /*FIM dos leitores*/
             
 }
